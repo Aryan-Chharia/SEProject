@@ -3,52 +3,100 @@ import { useNavigate } from "react-router-dom";
 import Layout from "../Utils/Layout";
 import axios from "axios";
 import { server } from "../../main";
+import { Loader2, GraduationCap, Users, Video } from "lucide-react";
 import "./dashboard.css";
 
-const AdminDashbord = ({ user }) => {
+const AdminDashboard = ({ user }) => {
   const navigate = useNavigate();
-
-  if (user && user.role !== "admin") return navigate("/");
-
   const [stats, setStats] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (user && user.role !== "admin") {
+      navigate("/");
+      return;
+    }
+    fetchStats();
+  }, [user, navigate]);
 
   async function fetchStats() {
     try {
+      setLoading(true);
       const { data } = await axios.get(`${server}/api/stats`, {
         headers: {
           token: localStorage.getItem("token"),
         },
       });
-
       setStats(data.stats);
     } catch (error) {
-      console.log(error);
+      console.error("Error fetching stats:", error);
+    } finally {
+      setLoading(false);
     }
   }
 
-  useEffect(() => {
-    fetchStats();
-  }, []);
+  const statsData = [
+    {
+      title: "Total Courses",
+      value: stats.totalCoures || 0,
+      icon: <GraduationCap size={24} />,
+      color: "purple",
+    },
+    {
+      title: "Total Lectures",
+      value: stats.totalLectures || 0,
+      icon: <Video size={24} />,
+      color: "blue",
+    },
+    {
+      title: "Total Users",
+      value: stats.totalUsers || 0,
+      icon: <Users size={24} />,
+      color: "teal",
+    },
+  ];
+
   return (
-    <div>
-      <Layout>
-        <div className="main-content">
-          <div className="box">
-            <p>Total Courses</p>
-            <p>{stats.totalCoures}</p>
-          </div>
-          <div className="box">
-            <p>Total Lectures</p>
-            <p>{stats.totalLectures}</p>
-          </div>
-          <div className="box">
-            <p>Total Users</p>
-            <p>{stats.totalUsers}</p>
-          </div>
+    <Layout>
+      <div className="dashboard">
+        <div className="dashboard__header">
+          <h1 className="dashboard__title">Admin Dashboard</h1>
+          <p className="dashboard__welcome">
+            Welcome back, <span className="dashboard__name">{user?.name || 'Admin'}</span>
+          </p>
         </div>
-      </Layout>
-    </div>
+
+        {loading ? (
+          <div className="dashboard__loading">
+            <Loader2 className="dashboard__loader" />
+            <p>Loading statistics...</p>
+          </div>
+        ) : (
+          <div className="dashboard__grid">
+            {statsData.map((stat, index) => (
+              <div 
+                key={index}
+                className={`dashboard__card dashboard__card--${stat.color}`}
+              >
+                <div className="dashboard__card-content">
+                  <div className={`dashboard__icon dashboard__icon--${stat.color}`}>
+                    {stat.icon}
+                  </div>
+                  <div className="dashboard__info">
+                    <h3 className="dashboard__card-title">{stat.title}</h3>
+                    <p className="dashboard__value">
+                      {stat.value.toLocaleString()}
+                    </p>
+                  </div>
+                </div>
+                <div className={`dashboard__card-glow dashboard__card-glow--${stat.color}`}></div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </Layout>
   );
 };
 
-export default AdminDashbord;
+export default AdminDashboard;

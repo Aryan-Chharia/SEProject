@@ -1,66 +1,128 @@
 .testimonials {
-  padding: 80px 0;
-  text-align: center;
+  padding: 1rem 2rem;
+  background: transparent;
+}
 
-  h2 {
-    font-size: 32px;
-    color: #8a4baf;
-    margin-bottom: 30px;
+.testimonials-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.testimonials h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  background: linear-gradient(45deg, #8e24aa, #3949ab);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.testimonials h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(45deg, #8e24aa, #3949ab);
+  border-radius: 2px;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.testimonial-card {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(142, 36, 170, 0.1);
+}
+
+.quote-icon {
+  color: #8e24aa;
+  font-size: 1.5rem;
+  opacity: 0.2;
+  margin-bottom: 1rem;
+}
+
+.message {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.testimonial-footer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  padding-top: 1.5rem;
+}
+
+.student-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+  box-shadow: 0 2px 10px rgba(142, 36, 170, 0.1);
+}
+
+.student-info {
+  flex: 1;
+}
+
+.name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+  background: linear-gradient(45deg, #8e24aa, #3949ab);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.position {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0.2rem 0 0 0;
+}
+
+@media (max-width: 768px) {
+  .testimonials {
+    padding: 3rem 1rem;
   }
 
-  .testmonials-cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
+  .testimonials h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
 
-    .testimonial-card {
-      background-color: white;
-      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      border-radius: 10px;
-      width: 300px;
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 
-      @media (max-width: 768px) {
-        width: 80%;
-        text-align: center;
-      }
-
-      .student-image {
-        img {
-          width: 80px;
-          height: 80px;
-          border-radius: 50%;
-          object-fit: cover;
-          margin-bottom: 10px;
-        }
-      }
-
-      .message {
-        font-size: 16px;
-        color: #333;
-        margin-bottom: 10px;
-      }
-
-      .info {
-        text-align: center;
-      }
-
-      .name {
-        font-size: 18px;
-        font-weight: bold;
-        color: #8a4baf;
-        margin-bottom: 5px;
-      }
-
-      .position {
-        font-size: 14px;
-        color: #666;
-      }
-    }
+  .testimonial-card {
+    padding: 1.5rem;
   }
 }

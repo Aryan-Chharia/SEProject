@@ -1,33 +1,272 @@
-.home {
-  background-color: #f5f5f5;
-  padding: 100px 0;
+/* Global Theme */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+  background: linear-gradient(120deg, #ede7f6, #e3f2fd);
+  color: #333;
+}
+
+/* Home Banner */
+.home-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 20px;
+  padding-top: 200px;
+  background: linear-gradient(120deg, #8e24aa, #3949ab);
+  height: 60vh;
+  position: relative;
+  color: white;
+}
+
+.home-text {
+  max-width: 600px;
+  z-index: 2;
+}
+
+.home-text h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.home-text .highlight {
+  color: #ffd54f;
+  font-weight: bold;
+}
+
+.home-text p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.cta-btn {
+  background: linear-gradient(45deg, #ff5722, #e91e63, #8e24aa, #3949ab);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.cta-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.home-image img {
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Animated Shapes Styles */
+.shapes-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.animated-shape {
+  position: absolute;
+  opacity: 0.3;
+  pointer-events: none;
+  filter: blur(1px);
+}
+
+/* Shape Variants */
+.circle-shape {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+}
+
+.square-shape {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(45deg, #FFE66D, #FF6B6B);
+  transform: rotate(45deg);
+}
+
+.triangle-shape {
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 45px solid rgba(78, 205, 196, 0.8);
+}
+
+.pentagon-shape {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(45deg, #A8E6CF, #DCEDC1);
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+}
+
+.cross-shape {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(45deg, #FF8B94, #FFB2A6);
+  clip-path: polygon(35% 0%, 65% 0%, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0% 65%, 0% 35%, 35% 35%);
+}
+
+.star-shape {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(45deg, #FFE66D, #FFB2A6);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.dot-shape {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #FF6B6B;
+  box-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+}
+
+.ring-shape {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 5px solid #4ECDC4;
+  box-shadow: 0 0 15px rgba(78, 205, 196, 0.5);
+}
+
+.squiggle-shape {
+  width: 60px;
+  height: 30px;
+  background: linear-gradient(45deg, #FFE66D, #FF6B6B);
+  clip-path: path('M0,15 Q15,0 30,15 Q45,30 60,15');
+}
+
+.heart-shape {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(45deg, #FF8B94, #FFB2A6);
+  clip-path: path('M20,10 C20,0 0,0 0,15 C0,30 20,40 20,40 C20,40 40,30 40,15 C40,0 20,0 20,10');
+}
+
+/* Make shapes more visible against different backgrounds */
+.home-banner .animated-shape {
+  opacity: 0.4;
+  mix-blend-mode: screen;
+}
+
+.home-cards-carousel .animated-shape {
+  opacity: 0.3;
+  mix-blend-mode: multiply;
+}
+
+/* Ensure content remains above shapes */
+.home-banner,
+.home-cards-carousel,
+.testimonials {
+  position: relative;
+  z-index: 2;
+}
+
+/* Add subtle glow effect to shapes */
+.animated-shape {
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+}
+
+/* Enhance card hover effect */
+.card {
+  backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.card:hover {
+  transform: scale(1.05);
+  background: linear-gradient(120deg, #8e24aa, #3949ab);
+  color: white;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Make text more readable with shapes background */
+.home-text h1,
+.home-text p {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Updated Auto-Scrolling Cards styles */
+.home-cards-carousel {
+  padding: 40px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cards-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.card-container {
+  display: flex;
+  gap: 20px;
+  animation: scroll-cards 20s linear infinite;
+  width: max-content;
+  padding: 20px 0;
+  padding-top: 60px;
+}
+
+.card-container:hover {
+  animation-play-state: paused;
+}
+
+.card {
+  flex: 0 0 auto;
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
   text-align: center;
+  width: 250px;
+  min-height: 200px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, background 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-  .home-content {
-    max-width: 800px;
-    margin: 0 auto;
+.card:hover {
+  transform: scale(1.05);
+  background: linear-gradient(120deg, #8e24aa, #3949ab);
+  color: white;
+}
 
-    h1 {
-      font-size: 36px;
-      margin-bottom: 20px;
+.card-icon {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
 
-      @media (max-width: 768px) {
-        font-size: 28px;
-      }
-    }
+.card h3 {
+  margin: 10px 0;
+  font-size: 18px;
+}
 
-    p {
-      font-size: 18px;
-      color: #666;
-      margin-bottom: 40px;
+.card p {
+  font-size: 14px;
+  margin: 0;
+  color: inherit;
+}
 
-      @media (max-width: 768px) {
-        font-size: 16px;
-      }
-    }
-
-    button {
-      padding: 12px 24px;
-    }
+@keyframes scroll-cards {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% / 3));
   }
 }

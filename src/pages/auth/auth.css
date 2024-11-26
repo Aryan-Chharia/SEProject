@@ -3,10 +3,11 @@
   align-items: center;
   justify-content: center;
   height: 80vh;
-  background-color: white;
+  background-color: transparent;
 
   .auth-form {
-    background-color: #fff;
+    margin-top: 145px;
+    background-color: white;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);

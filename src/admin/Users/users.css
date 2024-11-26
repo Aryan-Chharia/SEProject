@@ -1,8 +1,164 @@
-.users {
-  width: 350px;
+.users-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.users-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.users-header h1 {
+  font-size: 1.8rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.users-header p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.header-icon {
+  color: #8e24aa;
+}
+
+.table-container {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   overflow-x: auto;
-  white-space: nowrap;
-  margin: 20px auto;
-  min-height: 80vh;
-  border: solid gray 1px;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.users-table th,
+.users-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.users-table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #444;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.users-table tr:hover {
+  background-color: #f8f9fa;
+}
+
+.role-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.role-badge.admin {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.role-badge.user {
+  background-color: #f3e5f5;
+  color: #8e24aa;
+}
+
+.update-role-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background: linear-gradient(45deg, #8e24aa, #3949ab);
+  color: white;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.update-role-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 1rem;
+  color: #666;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.users-container {
+  animation: fadeIn 0.5s ease;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .users-container {
+    padding: 1rem;
+  }
+
+  .users-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .users-table {
+    font-size: 0.9rem;
+  }
+
+  .users-table th,
+  .users-table td {
+    padding: 0.75rem;
+  }
+
+  .update-role-btn {
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+/* Custom scrollbar for table container */
+.table-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.table-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

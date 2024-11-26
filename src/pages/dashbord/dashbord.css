@@ -2,6 +2,8 @@
   padding: 80px 0;
   text-align: center;
   min-height: 55vh;
+  margin-top: 50px;
+
 
   .dashboard-content {
     display: flex;
